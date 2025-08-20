@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Cumple Mes ❤️</title>
+  <link rel="icon" href="imagenes/favicon.png" type="image/png">
+  <style>
+    /* Fondo estrellas */
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: rgb(49, 11, 11);
+      overflow: hidden;
+      background: black;
+    }
+    .estrella {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: brillar 2s infinite alternate;
+    }
+    @keyframes brillar {
+      from { opacity: 0.3; }
+      to { opacity: 1; }
+    }
+
+    /* Contenedor */
+    .container {
+      position: relative;
+      z-index: 2;
+      margin-top: 10%;
+      padding: 0 10px;
+    }
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px 8px black;
+      animation: brillo 2s infinite alternate;
+    }
+    @keyframes brillo {
+      from { text-shadow: 0 0 10px #ff4d6d; }
+      to { text-shadow: 0 0 30px #fff; }
+    }
+
+    /* Botón frases */
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+      margin-top: 15px;
+    }
+    button:hover {
+      transform: scale(1.1);
+      background: #ff3355;
+    }
+
+    /* Mensaje */
+    .mensaje {
+      margin-top: 20px;
+      font-size: 1.3em;
+      text-shadow: 1px 1px 5px black;
+      color: #ff4d6d;
+      font-weight: bold;
+    }
+
+    /* Botón travieso */
+    #botonTravieso {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 12px 25px;
+      background: #ff9800;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    /* Carta romántica */
+    #carta {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      max-width: 400px;
+      font-size: 1.2em;
+      color: #d63384;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>💖 Feliz cumple mes mi chiquita, 5 AÑOS 5 MESES 💖</h1>
+    <button onclick="mostrarFrase()">Haz clic aquí 💌</button>
+    <div class="mensaje" id="mensaje"></div>
+  </div>
+
+  <!-- Botón travieso -->
+  <button id="botonTravieso">Haz clic si puedes 😏</button>
+
+  <!-- Carta romántica -->
+  <div id="carta">
+    <h2>💌 Me atrapaste 💌</h2>
+    <p>
+      Ahora me vas a tener que cuidar, mimar, proteger, besar,  
+      pero sobre todo... ¡amar mucho! ❤️
+    </p>
+  </div>
+
+  <!-- Música -->
+  <audio id="musica" loop>
+    <source src="/musica.mp3.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    /* Fondo de estrellas */
+    const numEstrellas = 100;
+    for (let i = 0; i < numEstrellas; i++) {
+      const estrella = document.createElement("div");
+      estrella.classList.add("estrella");
+      estrella.style.width = estrella.style.height = Math.random() * 3 + "px";
+      estrella.style.top = Math.random() * 100 + "vh";
+      estrella.style.left = Math.random() * 100 + "vw";
+      estrella.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(estrella);
+    }
+
+    /* Frases */
+    const frases = [
+      "Feliz cumple mes, mi OPPI BONITA ❤️",
+      "Cada día a tu lado es un regalo 🎁",
+      "Eres mi razón de sonreír 😍",
+      "Te amo más de lo que imaginas 💕",
+      "TU ERES MI ONE PIECE 😍",
+      "GRACIAS POR EXISTIR MI NIÑA 😍😍😍",
+      "QUIERO QUE CRESCAMOS JUNTOS 😍😍😍",
+      "ESPERO QUE TU TAMBIEN DESEES COMPARTIR MUCHO MAS CONMIGO😍😍😍",
+      "FELIZ CUMPLEMESSSSSSSSSS, TE AMOOOOOO TANTO ❤️❤️❤️❤️",
+     
+    ];
+    let index = 0;
+    function mostrarFrase() {
+      const mensaje = document.getElementById("mensaje");
+      mensaje.textContent = frases[index];
+      index = (index + 1) % frases.length;
+
+      const musica = document.getElementById("musica");
+      if (musica.paused) musica.play();
+    }
+
+    /* Música inicia en 4:15 */
+    const audio = document.getElementById('musica');
+    audio.currentTime = 255;
+
+    /* Corazones */
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.textContent = "💖";
+      corazon.style.position = "fixed";
+      corazon.style.top = "-2em";
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.fontSize = "24px";
+      corazon.style.animation = `caer ${3 + Math.random() * 5}s linear`;
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 8000);
+    }
+    setInterval(crearCorazon, 500);
+
+    /* Lluvia de frases */
+    function crearFraseCaida() {
+      const div = document.createElement("div");
+      div.textContent = frases[Math.floor(Math.random() * frases.length)];
+      div.classList.add("frase");
+      div.style.position = "fixed";
+      div.style.top = "-2em";
+      div.style.left = Math.random() * 100 + "vw";
+      div.style.fontSize = (14 + Math.random() * 14) + "px";
+      div.style.color = "#ff4d6d";
+      div.style.fontWeight = "bold";
+      div.style.pointerEvents = "none";
+      document.body.appendChild(div);
+
+      setTimeout(() => {
+        div.style.transition = "transform 5s linear, opacity 5s linear";
+        div.style.transform = "translateY(110vh)";
+        div.style.opacity = "0";
+      }, 50);
+
+      setTimeout(() => div.remove(), 5500);
+    }
+    setInterval(crearFraseCaida, 700);
+
+    /* Botón travieso */
+    const botonTravieso = document.getElementById("botonTravieso");
+    const carta = document.getElementById("carta");
+    let intentos = 0;
+
+    botonTravieso.addEventListener("mouseover", () => {
+      if (intentos < 5) {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        botonTravieso.style.left = x + "px";
+        botonTravieso.style.top = y + "px";
+        intentos++;
+      }
+    });
+
+    botonTravieso.addEventListener("click", () => {
+      carta.style.display = "block";
+      botonTravieso.style.display = "none";
+    });
+  </script>
+</body>
+</html>
+
+
+
