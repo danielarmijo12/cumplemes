@@ -229,6 +229,20 @@
     botonTravieso.addEventListener("click", () => {
       carta.style.display = "block";
       botonTravieso.style.display = "none";
+
+      <script>
+  /* TODO tu JavaScript existente: estrellas, frases, corazones, botón travieso */
+
+  // Activar música con el primer clic en la página
+  document.body.addEventListener('click', function reproducirMusicaUnaVez() {
+      const musica = document.getElementById('musica');
+      if (musica.paused) {
+          musica.play().catch(err => console.log(err));
+      }
+      document.body.removeEventListener('click', reproducirMusicaUnaVez); // solo se ejecuta una vez
+  });
+</script>
+
     });
   </script>
 </body>
